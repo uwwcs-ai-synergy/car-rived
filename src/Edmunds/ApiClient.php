@@ -1,7 +1,7 @@
 <?php
 namespace CarRived\Edmunds;
 
-class ApiClient
+abstract class ApiClient
 {
     private $apiKey;
     private $requestCount = 0;

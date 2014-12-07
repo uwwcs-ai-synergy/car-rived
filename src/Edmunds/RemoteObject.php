@@ -9,7 +9,7 @@ abstract class RemoteObject
     protected $client;
     protected $objectData;
 
-    protected function __construct(ApiClient $client, \stdClass $objectData)
+    public function __construct(ApiClient $client, \stdClass $objectData)
     {
         $this->client = $client;
         $this->objectData = $objectData;

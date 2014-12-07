@@ -40,12 +40,6 @@ class VehicleStyle extends RemoteObject
 
     public function getPhotos()
     {
-        $response = $this->client->makeCall('/v1/api/vehiclephoto/service/findphotosbystyleid', [
-            'styleId' => $this->id
-        ]);
-
-        return array_map(function ($object) {
-            return new VehiclePhoto($this->client, $object);
-        }, $response);
+        return $this->client->getStylePhotos($this->id);
     }
 }

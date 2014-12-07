@@ -7,11 +7,23 @@ namespace CarRived\Edmunds;
  */
 class VehicleMake extends RemoteObject
 {
-    public function getModel($model)
+    public function getModels($state = null, $year = null, $submodel = null, $category = null)
     {
         // check if models have been cached
         if (isset($this->models)) {
-            $object = $this->findObjectBy($this->models, 'niceName', $model);
+            return array_map(function ($object) {
+                return new VehicleModel($this->client, $object);
+            }, $this->models);
+        }
+
+        return $this->client->getModels($this->niceName, $state, $year, $submodel, $category);
+    }
+
+    public function getModel($modelName)
+    {
+        // check if models have been cached
+        if (isset($this->models)) {
+            $object = $this->findObjectBy($this->models, 'niceName', $modelName);
 
             if ($object === null) {
                 throw new ApiException("The model does not exist.", 404);
@@ -24,31 +36,8 @@ class VehicleMake extends RemoteObject
             $object->make->niceName = $this->niceName;
 
             return new VehicleModel($this->client, $object);
-        } else {
-            $url = sprintf('/api/vehicle/v2/%s/%s', $this->niceName, $model);
-
-            $response = $this->client->makeCall($url, ['view' => 'full']);
-            return new VehicleModel($this->client, $response);
-        }
-    }
-
-    public function getModels($state = null, $year = null, $submodel = null, $category = null)
-    {
-        // check if models have been cached
-        if (!isset($this->models)) {
-            $url = sprintf('/api/vehicle/v2/%s/models', $this->niceName);
-
-            $params = compact('state', 'year', 'submodel', 'category') + [
-                'view' => 'full'
-            ];
-
-            $response = $this->client->makeCall($url, $params);
-            $this->models = $response->models;
         }
 
-        // return vehicle model objects for each model
-        return array_map(function ($object) {
-            return new VehicleModel($this->client, $object);
-        }, $this->models);
+        return $this->client->getModel($this->niceName, $modelName);
     }
 }

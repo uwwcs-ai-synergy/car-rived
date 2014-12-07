@@ -1,18 +1,14 @@
 <?php
 namespace CarRived;
-require 'Autoloader.php';
+require '../src/Autoloader.php';
 
-use CarRived\Edmunds\ApiClient;
-use CarRived\Edmunds\VehicleApi;
-
-$client = new ApiClient('ryxpfa645s3vc4vywcwkdju9');
-$vehicles = new VehicleApi($client);
+$client = new Edmunds\VehicleApiClient('ryxpfa645s3vc4vywcwkdju9');
 $photos = [];
 $error = null;
 
 if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
     try {
-        $style = $vehicles->getMake($_GET['make'])->getModel($_GET['model'])->getYear($_GET['year'])->getStyles()[0];
+        $style = $client->getModelStyles($_GET['make'], $_GET['model'], $_GET['year'])[0];
         $photos = $style->getPhotos();
     } catch (Edmunds\ApiException $e) {
         $error = $e->getMessage();

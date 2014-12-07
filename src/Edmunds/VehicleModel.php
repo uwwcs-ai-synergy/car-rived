@@ -17,6 +17,18 @@ class VehicleModel extends RemoteObject
         return new VehicleMake($this->client, $this->make);
     }
 
+    public function getYears($state = null, $submodel = null, $category = null)
+    {
+        // check if years have been cached
+        if (isset($this->years)) {
+            return array_map(function ($object) {
+                return new VehicleModelYear($this->client, $object);
+            }, $this->years);
+        }
+
+        return $this->client->getModelYears($this->make->niceName, $this->niceName, $state, $submodel, $category);
+    }
+
     public function getYear($year)
     {
         // check if years have been cached
@@ -35,29 +47,8 @@ class VehicleModel extends RemoteObject
             $object->model->niceName = $this->niceName;
 
             return new VehicleModelYear($this->client, $object);
-        } else {
-            $url = sprintf('/api/vehicle/v2/%s/%s/%d', $this->make->niceName, $this->niceName, $year);
-
-            $response = $this->client->makeCall($url, ['view' => 'full']);
-            return new VehicleModelYear($this->client, $response);
-        }
-    }
-
-    public function getYears($state = null, $submodel = null, $category = null)
-    {
-        // check if years have been cached
-        if (!isset($this->years)) {
-            $url = sprintf('/api/vehicle/v2/%s/%s/years', $this->make->niceName, $this->niceName);
-            $params = compact('state', 'submodel', 'category') + [
-                'view' => 'full'
-            ];
-
-            $response = $this->client->makeCall($url, $params);
-            $this->years = $response->years;
         }
 
-        return array_map(function ($object) {
-            return new VehicleModelYear($this->client, $object);
-        }, $this->years);
+        return $this->client->getModelYear($this->make->niceName, $this->niceName, $year);
     }
 }
