@@ -10,7 +10,7 @@ class VehicleModel extends RemoteObject
     /**
      * Gets the make of the model.
      *
-     * @return [type] [description]
+     * @return VehicleMake
      */
     public function getMake()
     {

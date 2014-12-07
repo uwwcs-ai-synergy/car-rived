@@ -10,7 +10,7 @@ class VehicleModelYear extends RemoteObject
     /**
      * Gets the make of the model year.
      *
-     * @return [type] [description]
+     * @return VehicleMake
      */
     public function getMake()
     {
@@ -20,7 +20,7 @@ class VehicleModelYear extends RemoteObject
     /**
      * Gets the model of the model year.
      *
-     * @return [type] [description]
+     * @return VehicleModel
      */
     public function getModel()
     {
@@ -28,12 +28,14 @@ class VehicleModelYear extends RemoteObject
     }
 
     /**
-     * Gets
+     * Gets a list of styles for the model year.
      *
-     * @param  [type] $state    [description]
-     * @param  [type] $submodel [description]
-     * @param  [type] $category [description]
-     * @return [type]           [description]
+     * @param  string         $state     Filters models by state.
+     * @param  string         $submodel  Filters models by submodel types.
+     * @param  string         $category  Filters models by category.
+     * @return VehicleStyle[]
+     *
+     * @see VehicleApiClient::getModelStyles()
      */
     public function getStyles($state = null, $submodel = null, $category = null)
     {

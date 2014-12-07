@@ -11,7 +11,7 @@ class VehicleStyle extends RemoteObject
     /**
      * Gets the make of the vehicle style.
      *
-     * @return [type] [description]
+     * @return VehicleMake The make of the vehicle style.
      */
     public function getMake()
     {
@@ -21,7 +21,7 @@ class VehicleStyle extends RemoteObject
     /**
      * Gets the model of the vehicle style.
      *
-     * @return [type] [description]
+     * @return VehicleModel The model of the vehicle style.
      */
     public function getModel()
     {
@@ -31,13 +31,18 @@ class VehicleStyle extends RemoteObject
     /**
      * Gets the model year of the vehicle style.
      *
-     * @return [type] [description]
+     * @return VehicleModelYear The model year of the vehicle style.
      */
     public function getModelYear()
     {
         return new VehicleModelYear($this->client, $this->year);
     }
 
+    /**
+     * Gets all available photos of the vehicle model of the current style.
+     *
+     * @return VehiclePhoto[] An array of vehicle photo objects.
+     */
     public function getPhotos()
     {
         return $this->client->getStylePhotos($this->id);

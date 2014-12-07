@@ -1,6 +1,9 @@
 <?php
 namespace CarRived\Edmunds;
 
+/**
+ * Represents a particular photo of a specific vehicle style.
+ */
 class VehiclePhoto extends RemoteObject
 {
     public function getUrl($size)
@@ -15,6 +18,11 @@ class VehiclePhoto extends RemoteObject
         return null;
     }
 
+    /**
+     * Gets the URL of the best quality image.
+     *
+     * @return string
+     */
     public function getBestQualityUrl()
     {
         $bestUrl = null;
