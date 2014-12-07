@@ -49,16 +49,24 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
                 
             </div>
 
-            <?php if ($error != null):?>
-                <b>Error:</b> <?=$error?>
-            <?php endif;?>
+            <div class = 'row'>
 
-            <h2>Photos</h2>
-            <?php foreach ($photos as $photo):?>
-                <div><img style="max-width:100%" src="<?=$photo->getBestQualityUrl()?>"></div>
-            <?php endforeach;?>
+                <div class = 'col-md-12'>
 
-            <div>Got data in <?=$client->getRequestCount()?> API request(s).</div>
+                    <?php if ($error != null):?>
+                        <b>Error:</b> <?=$error?>
+                    <?php endif;?>
+
+                    <p>Photos</p>
+                    <?php foreach ($photos as $photo):?>
+                        <div class = 'col-md-4'><img style="max-width:100%" src="<?=$photo->getBestQualityUrl()?>"></div>
+                    <?php endforeach;?>
+
+                </div>
+
+                <div>Got data in <?=$client->getRequestCount()?> API request(s).</div>
+
+            </div>
 
         </div>
     </body>
