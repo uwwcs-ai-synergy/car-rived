@@ -35,13 +35,33 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
                 <div class = 'col-md-12'>
 
                     <form method="get">
-                        <label>Make</label>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">Make</span>
+                            <input type="text" class="form-control" placeholder="Volkswagon" name="make" value="<?=$_GET['make']?>"/>
+                        </div>
+                        
+                        <div class="input-group">
+                            <span class="input-group-addon">Model</span>
+                            <input type="text" class="form-control" placeholder="Volkswagon" name="make" value="<?=$_GET['model']?>"/>
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">Year</span>
+                            <input type="text" class="form-control" placeholder="Volkswagon" name="make" value="<?=$_GET['year']?>"/>
+                        </div>
+                        <div>
+                            <input type = 'submit'/>
+                        </div>
+                        <!-- original inputs 
+                        <span class="label label-info">Make</span>
                        <input type="text" name="make" value="<?=$_GET['make']?>"/>
-                        <label>Model</label>
+                        <span class="label label-info">Model</span>
                         <input type="text" name="model" value="<?=$_GET['model']?>"/>
-                        <label>Year</label>
+                        <span class="label label-info">Year</span>
                         <input type="text" name="year" value="<?=$_GET['year']?>"/>
                         <input type="submit"/>
+                        -->
                     </form>
                     <hr/>
 
@@ -59,7 +79,7 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
 
                     <p>Photos</p>
                     <?php foreach ($photos as $photo):?>
-                        <div class = 'col-md-4'><img style="max-width:100%" src="<?=$photo->getBestQualityUrl()?>"></div>
+                        <div class = 'col-md-3'><img style="max-width:100%" src="<?=$photo->getBestQualityUrl()?>"></div>
                     <?php endforeach;?>
 
                 </div>
