@@ -44,6 +44,23 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
 
                 <div class = 'col-md-12'>
 
+                    <?php if ($error != null):?>
+                        <b>Error:</b> <?=$error?>
+                    <?php endif;?>
+
+                    <span class="label label-primary">Photos</span>
+                    <?php foreach ($photos as $photo):?>
+                        <div class = 'col-md-3'><img style="max-width:100%" src="<?=$photo->getBestQualityUrl()?>"></div>
+                    <?php endforeach;?>
+
+                </div>
+
+                <!-- <div>Got data in <?=$client->getRequestCount()?> API request(s).</div> -->
+
+            </div>
+
+            <div class = 'col-md-12'>
+
                     <form method="get">
 
                         <div class="input-group">
@@ -61,7 +78,9 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
                             <input type="text" class="form-control" placeholder="2000" name="year" value="<?=$_GET['year']?>"/>
                         </div>
                         <div>
-                            <input type = 'submit'/>
+                            <button class = 'btn btn-primary' type = 'submit'>
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </button>
                         </div>
                         <!-- original inputs 
                         <span class="label label-info">Make</span>
@@ -77,25 +96,6 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
 
                 </div>
                 
-            </div>
-
-            <div class = 'row'>
-
-                <div class = 'col-md-12'>
-
-                    <?php if ($error != null):?>
-                        <b>Error:</b> <?=$error?>
-                    <?php endif;?>
-
-                    <p>Photos</p>
-                    <?php foreach ($photos as $photo):?>
-                        <div class = 'col-md-3'><img style="max-width:100%" src="<?=$photo->getBestQualityUrl()?>"></div>
-                    <?php endforeach;?>
-
-                </div>
-
-                <div>Got data in <?=$client->getRequestCount()?> API request(s).</div>
-
             </div>
 
         </div>
