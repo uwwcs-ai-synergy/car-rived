@@ -22,12 +22,14 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/bootstrap/3.2.0/css/bootstrap.min.css">
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
         <style>
             .banner { background-color: #2F4F4F; color: #fff; height: 100px;}
+            .footer { background-color: #2F4F4F; color: #fff; height: 50px; }
+
         </style>
     </head><!-- -->
 
@@ -48,14 +50,12 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
                         <b>Error:</b> <?=$error?>
                     <?php endif;?>
 
-                    <span class="label label-primary">Photos</span>
                     <?php foreach ($photos as $photo):?>
                         <div class = 'col-md-3'><img style="max-width:100%" src="<?=$photo->getBestQualityUrl()?>"></div>
                     <?php endforeach;?>
 
                 </div>
 
-                <!-- <div>Got data in <?=$client->getRequestCount()?> API request(s).</div> -->
 
             </div>
 
@@ -82,20 +82,18 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <!-- original inputs 
-                        <span class="label label-info">Make</span>
-                       <input type="text" name="make" value="<?=$_GET['make']?>"/>
-                        <span class="label label-info">Model</span>
-                        <input type="text" name="model" value="<?=$_GET['model']?>"/>
-                        <span class="label label-info">Year</span>
-                        <input type="text" name="year" value="<?=$_GET['year']?>"/>
-                        <input type="submit"/>
-                        -->
+                       
                     </form>
                     <hr/>
 
                 </div>
                 
+            </div>
+
+             <div class='row footer'>
+                <div class='col-md-12'>
+                    
+                </div>
             </div>
 
         </div>
