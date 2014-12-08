@@ -38,17 +38,17 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
 
                         <div class="input-group">
                             <span class="input-group-addon">Make</span>
-                            <input type="text" class="form-control" placeholder="Volkswagon" name="make" value="<?=$_GET['make']?>"/>
+                            <input type="text" class="form-control" placeholder="volkswagen" name="make" value="<?=$_GET['make']?>"/>
                         </div>
                         
                         <div class="input-group">
                             <span class="input-group-addon">Model</span>
-                            <input type="text" class="form-control" placeholder="Volkswagon" name="make" value="<?=$_GET['model']?>"/>
+                            <input type="text" class="form-control" placeholder="golf" name="model" value="<?=$_GET['model']?>"/>
                         </div>
 
                         <div class="input-group">
                             <span class="input-group-addon">Year</span>
-                            <input type="text" class="form-control" placeholder="Volkswagon" name="make" value="<?=$_GET['year']?>"/>
+                            <input type="text" class="form-control" placeholder="2000" name="year" value="<?=$_GET['year']?>"/>
                         </div>
                         <div>
                             <input type = 'submit'/>
