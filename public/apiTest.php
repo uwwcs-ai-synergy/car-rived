@@ -25,10 +25,20 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+        <style>
+            .banner { background-color: #2F4F4F; color: #fff; height: 100px;}
+        </style>
     </head><!-- -->
 
     <body>
         <div class= 'container'>
+
+            <div class='row banner'>
+                <div class='col-md-12'>
+                    <h1>Submit your car!</h1>
+                </div>
+            </div>
 
             <div class = 'row'>
 
