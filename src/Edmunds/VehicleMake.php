@@ -12,6 +12,12 @@ class VehicleMake extends RemoteObject
         // check if models have been cached
         if (isset($this->models)) {
             return array_map(function ($object) {
+                // pass in a reference to this make
+                $object->make = new \stdClass();
+                $object->make->id = $this->id;
+                $object->make->name = $this->name;
+                $object->make->niceName = $this->niceName;
+
                 return new VehicleModel($this->client, $object);
             }, $this->models);
         }

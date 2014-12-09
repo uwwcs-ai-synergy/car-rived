@@ -41,10 +41,13 @@ class VehicleApiClient extends ApiClient
      *
      * @see http://developer.edmunds.com/api-documentation/vehicle/spec_make/v2/02_make_details/api-description.html
      */
-    public function getMake($name)
+    public function getMake($name, $state = null, $year = null)
     {
         $url = sprintf('/api/vehicle/v2/%s', $name);
-        $response = $this->makeCall($url, ['view' => 'full']);
+        $params = compact('state', 'year') + [
+            'view' => 'full'
+        ];
+        $response = $this->makeCall($url, $params);
         return new VehicleMake($this, $response);
     }
 
@@ -67,7 +70,7 @@ class VehicleApiClient extends ApiClient
             'view' => 'full'
         ];
 
-        $response = $this->client->makeCall($url, $params);
+        $response = $this->makeCall($url, $params);
 
         // return vehicle model objects for each model
         return array_map(function ($object) {
@@ -84,10 +87,14 @@ class VehicleApiClient extends ApiClient
      *
      * @see http://developer.edmunds.com/api-documentation/vehicle/spec_model/v2/02_model_details/api-description.html
      */
-    public function getModel($makeName, $modelName)
+    public function getModel($makeName, $modelName, $state = null, $year = null, $submodel = null, $category = null)
     {
         $url = sprintf('/api/vehicle/v2/%s/%s', $makeName, $modelName);
-        $response = $this->makeCall($url, ['view' => 'full']);
+        $params = compact('state', 'year', 'submodel', 'category') + [
+            'view' => 'full'
+        ];
+
+        $response = $this->makeCall($url, $params);
         return new VehicleModel($this, $response);
     }
 
@@ -110,7 +117,7 @@ class VehicleApiClient extends ApiClient
             'view' => 'full'
         ];
 
-        $response = $this->client->makeCall($url, $params);
+        $response = $this->makeCall($url, $params);
 
         return array_map(function ($object) {
             return new VehicleModelYear($this, $object);
@@ -123,14 +130,21 @@ class VehicleApiClient extends ApiClient
      * @param  string           $makeName  The name of the make.
      * @param  string           $modelName The name of the model.
      * @param  int              $year      The model year.
+     * @param  string             $state     Filters models by state.
+     * @param  string             $submodel  Filters models by submodel types.
+     * @param  string             $category  Filters models by category.
      * @return VehicleModelYear
      *
      * @see http://developer.edmunds.com/api-documentation/vehicle/spec_model_year/v2/02_year_details/api-description.html
      */
-    public function getModelYear($makeName, $modelName, $year)
+    public function getModelYear($makeName, $modelName, $year, $state = null, $submodel = null, $category = null)
     {
         $url = sprintf('/api/vehicle/v2/%s/%s/%d', $makeName, $modelName, $year);
-        $response = $this->makeCall($url, ['view' => 'full']);
+        $params = compact('state', 'submodel', 'category') + [
+            'view' => 'full'
+        ];
+
+        $response = $this->makeCall($url, $params);
         return new VehicleModelYear($this, $response);
     }
 

@@ -22,6 +22,13 @@ class VehicleModel extends RemoteObject
         // check if years have been cached
         if (isset($this->years)) {
             return array_map(function ($object) {
+                // pass in a reference to this make and model
+                $object->make = $this->make;
+                $object->model = new \stdClass();
+                $object->model->id = $this->id;
+                $object->model->name = $this->name;
+                $object->model->niceName = $this->niceName;
+
                 return new VehicleModelYear($this->client, $object);
             }, $this->years);
         }
