@@ -2,6 +2,6 @@
 
 	<h2>Links</h2>
 
-	<p><a href = "car-rived.com/apiTest.php"> Test View </a></p>
+	<p><a href = "/apiTest.php"> Test View </a></p>
 
 </div>
