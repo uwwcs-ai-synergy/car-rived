@@ -59,8 +59,8 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
             </div>
 
             <div class = 'row'>
-            
-            <div class = 'col-md-12'>
+            <?php include("./links.php");?>
+            <div class = 'col-md-9'>
 
                     <form method="get">
 

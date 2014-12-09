@@ -28,7 +28,9 @@
 
             <div class = 'row'>
 
-                <div class = 'col-md-12'>
+            <?php include("./links.php");?>
+
+                <div class = 'col-md-9'>
                         
                     <form method = 'get' action = 'result.php'>
                         <div class="input-group">
