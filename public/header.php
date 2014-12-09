@@ -24,4 +24,4 @@
                 </div>
             </div>
 
-            <div class = 'row content'>
+            <div class = 'row'>

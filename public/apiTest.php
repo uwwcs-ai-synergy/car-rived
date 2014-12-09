@@ -15,34 +15,8 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
     }
 }
 ?>
-<!doctype html>
-<html>
-    <!-- bootstrap -->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="/bootstrap/3.2.0/css/bootstrap.min.css">
-
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-        <style>
-            .banner { background-color: #2F4F4F; color: #fff; height: 100px;}
-            .footer { background-color: #2F4F4F; color: #fff; height: 50px; }
-
-        </style>
-    </head><!-- -->
-
-    <body>
-        <div class= 'container'>
-
-            <div class='row banner'>
-                <div class='col-md-12'>
-                    <h1>Submit your car!</h1>
-                </div>
-            </div>
-
-            <div class = 'row'>
+<?php include("./header.php"); ?>
 
                 <div class = 'col-md-12'>
 
@@ -55,7 +29,6 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
                     <?php endforeach;?>
 
                 </div>
-
 
             </div>
 
@@ -86,16 +59,8 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
                     </form>
                     <hr/>
 
-                </div>
+            </div>
                 
-            </div>
+        
 
-             <div class='row footer'>
-                <div class='col-md-12'>
-                    
-                </div>
-            </div>
-
-        </div>
-    </body>
-</html>
+             <?php include("./footer.php") ?>
