@@ -24,15 +24,17 @@ class VehicleSearcher
         //if choosing any make, finalLeaf should be 4
         //$rootNode = SearchNode::fromClient($this->client);
         $rootNode = SearchNode::fromRemoteObject($this->client->getMake($make, Edmunds\VehicleApiClient::STATE_NEW));
-        $this->foundNodes = [];
+        $this->foundNodes = new \SplDoublyLinkedList();
 
         //var_dump($rootNode);
         //var_dump($rootNode->getChildren()[0]->getChildren()[0]->getChildren()[0]->getObject()->price);
         $this->searchNode($rootNode, $nodeCount);
 
-        return array_map(function ($node) {
-            return $node->getObject();
-        }, $this->foundNodes);
+        $vehicles = [];
+        foreach ($this->foundNodes as $node) {
+            $vehicles[] = $node->getObject();
+        }
+        return $vehicles;
     }
 
     protected function nodeValue(SearchNode $node, $depth)
@@ -82,18 +84,22 @@ class VehicleSearcher
     protected function searchNode(SearchNode $parent, $nodeCount, $depth = 0)
     {
         $parentValue = $this->nodeValue($parent, $depth);
-        printf("Examining object at depth %d of value %d\r\n", $depth, $parentValue);
+        //printf("Examining object at depth %d of value %d\r\n", $depth, $parentValue);
 
         if ($depth === $this->finalLeaf) {
-            if (count($this->foundNodes) < $nodeCount) {
-                $this->foundNodes[] = $parent;
-            } else {
-                for ($i = 0; $i < count($this->foundNodes); $i++) {
-                    if ($parentValue > $this->nodeValue($this->foundNodes[$i], $this->finalLeaf)) {
-                        $this->foundNodes[$i] = $parent;
-                        break;
-                    }
+            if ($this->foundNodes->isEmpty()) {
+                $this->foundNodes->push($parent);
+            }
+
+            for ($i = 0; $i < count($this->foundNodes); $i++) {
+                if ($parentValue > $this->nodeValue($this->foundNodes[$i], $this->finalLeaf)) {
+                    $this->foundNodes->add($i, $parent);
+                    break;
                 }
+            }
+
+            if (count($this->foundNodes) >= $nodeCount) {
+                $this->foundNodes->pop();
             }
         }
 
