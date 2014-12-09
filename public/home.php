@@ -1,34 +1,17 @@
-<!doctype html>
+<?php
 
-<html>
-    <!-- bootstrap -->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    include("header.php");
 
-        <link rel="stylesheet" href="/bootstrap/3.2.0/css/bootstrap.min.css">
+    include("links.php");
 
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+?>
 
-        <style>
-            .banner { background-color: #2F4F4F; color: #fff; height: 100px;}
-            .footer { background-color: #2F4F4F; color: #fff; height: 50px; }
+    <div class='col-md-9'>
+        <div class='page-header'>
+            <h3>Car-Rived<small>Homepage</small></h3>
+        </div>
+    </div>
 
-        </style>
-    </head><!-- -->
-
-    <body>
-        <div class= 'container'>
-
-            <div class='row banner'>
-                <div class='col-md-12'>
-                    <h1>Home!</h1>
-                </div>
-            </div>
-            
-            <div class = 'row footer'>
-            	<div class = 'col-md-12'></div>
-            </div>
-    </body>
-
-</html>
+<?php
+    include("footer.php");
+?>
