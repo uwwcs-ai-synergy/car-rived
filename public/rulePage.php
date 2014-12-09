@@ -22,7 +22,7 @@
 
             <div class='row banner'>
                 <div class='col-md-12'>
-                    <h1>Submit your car!</h1>
+                    <h1>Submit your rule!</h1>
                 </div>
             </div>
 
