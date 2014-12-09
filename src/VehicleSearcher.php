@@ -29,7 +29,10 @@ class VehicleSearcher
         //var_dump($rootNode);
         //var_dump($rootNode->getChildren()[0]->getChildren()[0]->getChildren()[0]->getObject()->price);
         $this->searchNode($rootNode, $nodeCount);
-        return $this->foundNodes;
+
+        return array_map(function ($node) {
+            return $node->getObject();
+        }, $this->foundNodes);
     }
 
     protected function nodeValue(SearchNode $node, $depth)
