@@ -56,9 +56,10 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
 
                 </div>
 
-
             </div>
 
+            <div class = 'row'>
+            
             <div class = 'col-md-12'>
 
                     <form method="get">
@@ -86,14 +87,11 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
                     </form>
                     <hr/>
 
-                </div>
-                
+            </div>
             </div>
 
              <div class='row footer'>
-                <div class='col-md-12'>
-                    
-                </div>
+                <div class='col-md-12'></div>
             </div>
 
         </div>
