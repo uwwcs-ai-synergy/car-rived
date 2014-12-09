@@ -22,7 +22,7 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
@@ -59,8 +59,8 @@ if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
             </div>
 
             <div class = 'row'>
-            
-            <div class = 'col-md-12'>
+            <?php include("./links.php");?>
+            <div class = 'col-md-9'>
 
                     <form method="get">
 
