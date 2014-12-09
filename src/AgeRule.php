@@ -12,6 +12,6 @@ final class AgeRule extends Rule
 
     public function heuristic(Edmunds\VehicleStyle $vehicle)
     {
-        return max(0, $this->minYear - $vehicle->getModelYear()->year);
+        return pow(($this->minYear - $vehicle->getModelYear()->year) / 4, 3);
     }
 }
