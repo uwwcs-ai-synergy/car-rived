@@ -7,6 +7,10 @@
 
 	switch($action){
 
+		case "test": include("./apiTest.php");
+
+				break;
+
 		default: include("./home.php");
 				break;
 	}
