@@ -5,6 +5,7 @@ class VehicleSearcher
 {
     protected $client;
     protected $ruleSet;
+    protected $trainingSet;
     protected $foundNodes;
     protected $finalLeaf = 3;
 
@@ -19,9 +20,20 @@ class VehicleSearcher
         return $this->ruleSet;
     }
 
+    public function getTrainingSet()
+    {
+        return $this->trainingSet;
+    }
+
+    public function setTrainingSet(array $trainingSet)
+    {
+        $this->trainingSet = $trainingSet;
+    }
+
     public function search($make, $nodeCount)
     {
         //if choosing any make, finalLeaf should be 4
+        //$this->finalLeaf = 4;
         //$rootNode = SearchNode::fromClient($this->client);
         $rootNode = SearchNode::fromRemoteObject($this->client->getMake($make, Edmunds\VehicleApiClient::STATE_NEW));
         $this->foundNodes = new \SplDoublyLinkedList();

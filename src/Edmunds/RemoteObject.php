@@ -15,6 +15,11 @@ abstract class RemoteObject
         $this->objectData = $objectData;
     }
 
+    public function getData()
+    {
+        return $this->objectData;
+    }
+
     public function __get($name)
     {
         return $this->objectData->{$name};
