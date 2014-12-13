@@ -8,13 +8,19 @@
 
         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/css/jquery.jsonview.css">
 
         <style>
             body {
               padding-top: 70px;
               padding-bottom: 30px;
             }
+            .carousel-inner > .item > img {
+                width: 100%;
+            }
         </style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     </head>
 
     <body role="document">

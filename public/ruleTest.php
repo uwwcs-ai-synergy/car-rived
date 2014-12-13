@@ -1,6 +1,9 @@
 <?php
 namespace CarRived;
 require '../src/Autoloader.php';
+/**
+ * File for testing API calls and search results.
+ */
 
 $cache = new Edmunds\ApiCache('../cache');
 $api = new Edmunds\VehicleApiClient('ryxpfa645s3vc4vywcwkdju9', $cache);

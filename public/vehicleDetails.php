@@ -61,6 +61,13 @@
 
     <div class="col-md-12">
         <h2>All vehicle data</h2>
-        <pre><?=print_r($style->getData(), true);?></pre>
+        <div class="well" id="json"></div>
+
+        <script type="text/javascript">
+            var json = <?=json_encode($style->getData());?>;
+            $(function() {
+                $("#json").JSONView(json);
+            });
+        </script>
     </div>
 <?php endif;?>

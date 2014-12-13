@@ -4,6 +4,7 @@
     $client = new Edmunds\VehicleApiClient(API_KEY);
     $photos = [];
     $error = null;
+    $style = null;
 
     if (isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])) {
         try {
@@ -44,9 +45,7 @@
 <div class="col-md-12">
     <?php if ($error != null):?>
         <b>Error:</b> <?=$error?>
+    <?php else:?>
+        <p><a href="vehicleDetails?id=<?=$style->id?>" target="_blank" class="btn btn-default">View Details</a></p>
     <?php endif;?>
-
-    <?php foreach ($photos as $photo):?>
-        <div class = 'col-md-3'><img style="max-width:100%" src="<?=$photo->getBestQualityUrl()?>"></div>
-    <?php endforeach;?>
 </div>
