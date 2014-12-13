@@ -1,6 +1,9 @@
 <?php
 namespace CarRived;
 
+/**
+ * Rule that has a heuristic that looks at a vehicles retail cost.
+ */
 final class PriceRangeRule extends Rule
 {
     private $minPrice;
@@ -14,8 +17,9 @@ final class PriceRangeRule extends Rule
 
     public function heuristic(Edmunds\VehicleStyle $vehicle)
     {
-        $price = 0;
+        $price = 25000; // assume $25000
 
+        // try to get some kind of price
         if (isset($vehicle->price->baseMSRP)) {
             $price = $vehicle->price->baseMSRP;
         } elseif (isset($vehicle->price->baseInvoice)) {

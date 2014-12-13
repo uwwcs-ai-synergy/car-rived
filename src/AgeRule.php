@@ -1,6 +1,9 @@
 <?php
 namespace CarRived;
 
+/**
+ * Rule that calculates a heuristic value based on a vehicle's age.
+ */
 final class AgeRule extends Rule
 {
     private $minYear;

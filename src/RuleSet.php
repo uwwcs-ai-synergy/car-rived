@@ -1,6 +1,10 @@
 <?php
 namespace CarRived;
 
+/**
+ * A rule set that calculates a heuristic value as the sum of each value
+ * determined by each rule.
+ */
 class RuleSet
 {
     protected $rules;

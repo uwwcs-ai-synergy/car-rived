@@ -1,6 +1,9 @@
 <?php
 namespace CarRived;
 
+/**
+ * Class autoloader.
+ */
 class Autoloader
 {
     /**

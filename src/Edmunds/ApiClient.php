@@ -10,7 +10,7 @@ abstract class ApiClient
     public function __construct($apiKey, ApiCache $cache = null)
     {
         $this->apiKey = $apiKey;
-        $this->cache = $cache;
+        $this->cache = $cache; // cache for speeding up API requests over time
     }
 
     public function getRequestCount()
